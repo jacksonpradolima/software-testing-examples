@@ -5,23 +5,26 @@ public class Identifier
 	public boolean validateIdentifier(String s)
 	{
 		char achar;
-		boolean valid_id;
-		valid_id = true;
+		boolean valid_id = true;
+
+		if (s == null) {
+			return false;
+		}
 		
+		// We could check for s.length() == 0, but we want to force an ED test requirement here
 		try {
 			achar = s.charAt(0);
 		} catch (StringIndexOutOfBoundsException e) {
 			return false;
 		}
+		
 		valid_id = valid_s(achar);
 		if (s.length() > 1) {
-			achar = s.charAt(1);
-			int i = 1;
-			while (i < s.length() - 1) {
+			for (int i = 1; i < s.length(); i++) {
 				achar = s.charAt(i);
-				if (!valid_f(achar))
+				if (! valid_f(achar)) {
 					valid_id = false;
-				i++;
+				}
 			}
 		}
 		if (valid_id && (s.length() >= 1) && (s.length() <= 6))

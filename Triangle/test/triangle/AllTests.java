@@ -1,4 +1,4 @@
-package identifier;
+package triangle;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -6,8 +6,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses(
 {
-	IdentifierTest_Functional.class,
-	IdentifierTest_Structural.class
+	TriangleTest_Functional.class
 })
 public class AllTests
 {
