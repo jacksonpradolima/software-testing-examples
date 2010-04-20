@@ -5,7 +5,7 @@ package bst;
  * in search tree insertions.
  * @author Mark Allen Weiss
  */
-public class DuplicateItem extends Exception
+public class DuplicateItem extends RuntimeException
 {
     /**
      * Construct this exception object.

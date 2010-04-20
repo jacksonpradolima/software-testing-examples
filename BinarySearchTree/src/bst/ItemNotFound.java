@@ -4,7 +4,7 @@ package bst;
  * trees, hash tables, and list and tree iterators.
  * @author Mark Allen Weiss
  */
-public class ItemNotFound extends Exception
+public class ItemNotFound extends RuntimeException
 {
     /**
      * Construct this exception object.
