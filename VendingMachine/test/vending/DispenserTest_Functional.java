@@ -15,7 +15,7 @@ public class DispenserTest_Functional {
 
 	/**
 	 * First test case: testing different credit parameter.
-	 * 
+	 *
 	 * Increase the value necessary to by a valid and available item.
 	 */
 	@Test
@@ -32,7 +32,7 @@ public class DispenserTest_Functional {
 
 	/**
 	 * First test case: testing different credit parameter.
-	 * 
+	 *
 	 * Increase the value necessary to by a valid and available item.
 	 */
 	@Test(expected = InsufficientCreditException.class)
@@ -51,7 +51,7 @@ public class DispenserTest_Functional {
 
 	/**
 	 * Second test case: testing different credit parameter.
-	 * 
+	 *
 	 * Increase the value necessary to by a valid and available item.
 	 */
 	@Test
@@ -91,7 +91,7 @@ public class DispenserTest_Functional {
 	}
 
 	/**
-	 * Sixth test case: checks the not enought credit exception.
+	 * Sixth test case: checks the not enough credit exception.
 	 */
 	@Test(expected=InsufficientCreditException.class)
 	public void testNotEnoughtCredit() {
