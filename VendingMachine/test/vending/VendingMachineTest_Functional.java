@@ -47,28 +47,17 @@ public class VendingMachineTest_Functional
 		}
 	}
 
-	/**
-	 * Test Case 2: check the behaviour of the insert coin operation
-	 */
-	@Test(expected=MachineOutOfService.class)
-	public void testInsertTooMuchCoin() {
-		for (int i = 1; i <= 1000; i++) {
-			int result = mac.insertCoin();
-			assertEquals(VendingMachine.COIN_VALUE * i, result);
-		}
-	}
 
-	
 	/**
 	 * Test Case 3: check the behaviour of the vend item operation
 	 */
 	@Test
-	public void testVendItem() {
+	public void testVendItem() throws Exception {
 		// Check is all valid and available item can be bought by 50
 		mac.insertCoin();
 		mac.insertCoin();
 
-		int result = mac.vendItem(1);
+		int result = mac.vendItem(2);
 		assertEquals(0, result);
 	}
 
@@ -77,9 +66,9 @@ public class VendingMachineTest_Functional
 	 * had been inserted.
 	 */
 	@Test(expected=NoCoinsException.class)
-	public void testVendItemNoCoin() {
+	public void testVendItemNoCoin() throws Exception  {
 		// Check is all valid and available item can be bought by 50
-		mac.vendItem(1);
+		mac.vendItem(2);
 	}
 
 	/**
@@ -87,7 +76,7 @@ public class VendingMachineTest_Functional
 	 * invalid item is being sold.
 	 */
 	@Test(expected=InvalidItemException.class)
-	public void testVendItemInvalidException() {
+	public void testVendItemInvalidException() throws Exception  {
 		// All itens below 1 and above 20 should be invalid
 		mac.insertCoin();
 		mac.insertCoin();
@@ -104,7 +93,7 @@ public class VendingMachineTest_Functional
 	 * but unavailable item is being sold.
 	 */
 	@Test(expected=UnavailableItemException.class)
-	public void testUnavailableItems() {
+	public void testUnavailableItems() throws Exception  {
 		mac.insertCoin();
 		mac.insertCoin();
 		mac.vendItem(5);
@@ -117,10 +106,10 @@ public class VendingMachineTest_Functional
 	 * available item is being sold bu the credit is not enought.
 	 */
 	@Test(expected=InsufficientCreditException.class)
-	public void testNotEnoughtCredit() {
+	public void testNotEnoughtCredit() throws Exception {
 		// Only one coin inserted
 		mac.insertCoin();
-		mac.vendItem(10); // valid and available item
+		mac.vendItem(13); // valid and available item
 	}
 
 	/**
@@ -128,14 +117,14 @@ public class VendingMachineTest_Functional
 	 * available item is being sold and there is enougth credit.
 	 */
 	@Test
-	public void testRemainCredit() {
+	public void testRemainCredit() throws Exception {
 		for (int i = 1; i <= 20; i++) {
 			mac.returnCoins(); // return all coins
 			for (int j = 1; j <= i; j++) { // inserting 50 i times
 				mac.insertCoin();
 				mac.insertCoin();
 			}
-			int value = mac.vendItem(10); // valid and available item
+			int value = mac.vendItem(13); // valid and available item
 			assertEquals((i * 2 * VendingMachine.COIN_VALUE) - Dispenser.VALUE, value); // checking the charge
 		}
 	}

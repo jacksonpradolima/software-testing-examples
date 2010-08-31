@@ -1,9 +1,10 @@
 package vending;
 
-public class InsufficientCreditException extends RuntimeException {
+public class InsufficientCreditException extends Exception
+{
+	private static final String ERR_INSUFFICIENT_CREDIT = "Insufficient credit";
 
-	public InsufficientCreditException(String string) {
-		super(string);
+	public InsufficientCreditException() {
+		super(ERR_INSUFFICIENT_CREDIT);
 	}
-
 }

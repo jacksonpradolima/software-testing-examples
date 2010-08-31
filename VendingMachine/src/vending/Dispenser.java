@@ -21,21 +21,6 @@ public class Dispenser
 
 	private static final int[] AVAILABLE_ITEMS = { 2, 3, 13 };
 
-	private String errorMessage;
-
-	public static final String ERR_NO_COINS = "No coins inserted";
-
-	public static final String ERR_INVALID_SELECTION = "Invalid selection";
-
-	public static final String ERR_UNAVAILABLE_ITEM = "Item selected is unavailable";
-
-	public static final String ERR_INSUFFICIENT_CREDIT = "Insufficient credit";
-
-
-	public Dispenser() {
-		errorMessage = null;
-	}
-
     /**
      * Simulates the behavior of the dispenser component of a vending
      * machine. A given item is dispensed when there is enough credit
@@ -50,23 +35,24 @@ public class Dispenser
      * @return the value of the item if available and the credit is sufficient,
      * or the credit if the item is invalid, unavailable or the credit is
      * insufficient.
+     * @throws NoCoinsException
+     * @throws InvalidItemException
+     * @throws UnavailableItemException
+     * @throws InsufficientCreditException
      */
-	public int dispense(int credit, int selection)
+	public int dispense(int credit, int selection) throws Exception
 	{
-		if (credit <= 0) {
-			errorMessage = ERR_NO_COINS;
+		if (credit == 0) {
+			throw new NoCoinsException();
 		} else if (selection < INITIAL_VALID_ITEM || selection > FINAL_VALID_ITEM) {
-			errorMessage = ERR_INVALID_SELECTION;
+			throw new InvalidItemException();
 		} else if (! isAvailable(selection)) {
-			errorMessage = ERR_UNAVAILABLE_ITEM;
+			throw new UnavailableItemException();
 		} else if (credit < VALUE) {
-			errorMessage = ERR_INSUFFICIENT_CREDIT;
+			throw new InsufficientCreditException();
 		} else {
-			errorMessage = null;
 			return VALUE;
 		}
-
-		return 0;
 	}
 
 	/**
@@ -83,14 +69,5 @@ public class Dispenser
 			}
 		}
 		return false;
-	}
-
-	public int[] getValidSelection()
-	{
-		return AVAILABLE_ITEMS;
-	}
-
-	public String getErrorMessage() {
-		return errorMessage;
 	}
 }

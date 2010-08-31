@@ -10,6 +10,6 @@ import org.junit.runners.Suite;
 	VendingMachineTest_Functional.class,
 	VendingMachineTest_OrsoEtAl.class
 })
-public class VendingJUnitTests
+public class AllJUnitTests
 {
 }

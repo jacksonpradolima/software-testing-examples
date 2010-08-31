@@ -58,17 +58,16 @@ public class VendingTestDriver {
 						} else {
 							System.out.println("Take your coins (" + value + ")");
 						}
-					} else if (methodName.equals("show")) {
-						System.out.println(machine.listItems());
 					} else if (methodName.equals("vendItem")) {
 						String argument = tokens.nextToken();
 						Integer selection = Integer.parseInt(argument);
-						value = machine.vendItem(selection.intValue());
-						if (VendingMachine.DEFAULT_MSG.equals(machine.getMessage())) {
+						try {
+							value = machine.vendItem(selection.intValue());
 							System.out.println("Take your item");
+						} catch (Exception e) {
+							System.out.println(e.getMessage());
+						} finally {
 							System.out.println("Current value = " + value);
-						} else {
-							System.out.println(machine.getMessage());
 						}
 					}
 				} else {

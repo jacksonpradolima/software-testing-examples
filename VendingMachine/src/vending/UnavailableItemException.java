@@ -1,9 +1,10 @@
 package vending;
 
-public class UnavailableItemException extends RuntimeException {
+public class UnavailableItemException extends Exception
+{
+	private static final String ERR_UNAVAILABLE_ITEM = "Item selected is unavailable";
 
-	public UnavailableItemException(String string) {
-		super(string);
+	public UnavailableItemException() {
+		super(ERR_UNAVAILABLE_ITEM);
 	}
-
 }

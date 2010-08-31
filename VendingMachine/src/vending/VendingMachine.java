@@ -15,8 +15,6 @@ public class VendingMachine
 {
 	public static final int COIN_VALUE = 25;
 
-	public static final String DEFAULT_MSG = "Ok";
-
 	private int totalValue;
 
 	private int currentValue;
@@ -64,25 +62,17 @@ public class VendingMachine
 	 *
 	 * @return the current value remaining in cents after on success.
 	 */
-	public int vendItem(int selection) {
-		int expense = dispenser.dispense(currentValue, selection);
+	public int vendItem(int selection) throws Exception {
+		int expense = 0;
+
+		try {
+			expense = dispenser.dispense(currentValue, selection);
+		} catch (Exception e) {
+			throw e;
+		}
 		totalValue += expense;
 		currentValue -= expense;
 		return currentValue;
-	}
-
-	public String listItems() {
-		int[] items = dispenser.getValidSelection();
-		int i = 0;
-		StringBuilder sb = new StringBuilder();
-
-		for (i = 0; i < (items.length - 1); i++) {
-			sb.append(items[i]);
-			sb.append(", ");
-		}
-		sb.append(items[i]);
-
-		return sb.toString();
 	}
 
 	public int getCurrentValue() {
@@ -91,14 +81,5 @@ public class VendingMachine
 
 	protected int getTotalValue() {
 		return totalValue;
-	}
-
-	public String getMessage() {
-		String dispenserMessage =  dispenser.getErrorMessage();
-		if (dispenserMessage != null) {
-			return dispenserMessage;
-		} else {
-			return DEFAULT_MSG;
-		}
 	}
 }

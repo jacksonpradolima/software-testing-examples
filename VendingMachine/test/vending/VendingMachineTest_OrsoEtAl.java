@@ -22,19 +22,20 @@ public class VendingMachineTest_OrsoEtAl {
 	}
 
 	@Test
-	public void testCase1() {
+	public void testCase1() throws Exception {
 		assertEquals(0, mac.returnCoins());
 		assertEquals(0, mac.getCurrentValue());
 		assertEquals(0, mac.getTotalValue());
-		assertEquals(VendingMachine.DEFAULT_MSG, mac.getMessage());
 	}
 
 	@Test
-	public void testCase2() {
-		assertEquals(0, mac.vendItem(3));
+	public void testCase2() throws Exception {
+		try {
+			assertEquals(0, mac.vendItem(3));
+		} catch (NoCoinsException e) {}
 		assertEquals(0, mac.getCurrentValue());
 		assertEquals(0, mac.getTotalValue());
-		assertEquals(Dispenser.ERR_NO_COINS, mac.getMessage());
+
 	}
 
 	@Test
@@ -43,16 +44,16 @@ public class VendingMachineTest_OrsoEtAl {
 		assertEquals(VendingMachine.COIN_VALUE, mac.returnCoins());
 		assertEquals(0, mac.getCurrentValue());
 		assertEquals(0, mac.getTotalValue());
-		assertEquals(VendingMachine.DEFAULT_MSG, mac.getMessage());
 	}
 
 	@Test
-	public void testCase4() {
+	public void testCase4() throws Exception {
 		assertEquals(VendingMachine.COIN_VALUE, mac.insertCoin());
-		assertEquals(VendingMachine.COIN_VALUE, mac.vendItem(3));
+		try {
+			assertEquals(VendingMachine.COIN_VALUE, mac.vendItem(3));
+		} catch (InsufficientCreditException e) {}
 		assertEquals(VendingMachine.COIN_VALUE, mac.getCurrentValue());
 		assertEquals(0, mac.getTotalValue());
-		assertEquals(Dispenser.ERR_INSUFFICIENT_CREDIT, mac.getMessage());
 	}
 
 	@Test
@@ -62,17 +63,15 @@ public class VendingMachineTest_OrsoEtAl {
 		assertEquals(VendingMachine.COIN_VALUE * 2, mac.returnCoins());
 		assertEquals(0, mac.getCurrentValue());
 		assertEquals(0, mac.getTotalValue());
-		assertEquals(VendingMachine.DEFAULT_MSG, mac.getMessage());
 	}
 
 	@Test
-	public void testCase6() {
+	public void testCase6() throws Exception {
 		assertEquals(VendingMachine.COIN_VALUE, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 2, mac.insertCoin());
 		assertEquals(0, mac.vendItem(3));
 		assertEquals(0, mac.getCurrentValue());
 		assertEquals(VendingMachine.COIN_VALUE * 2, mac.getTotalValue());
-		assertEquals(VendingMachine.DEFAULT_MSG, mac.getMessage());
 	}
 
 	@Test
@@ -83,18 +82,16 @@ public class VendingMachineTest_OrsoEtAl {
 		assertEquals(VendingMachine.COIN_VALUE * 3, mac.returnCoins());
 		assertEquals(0, mac.getCurrentValue());
 		assertEquals(0, mac.getTotalValue());
-		assertEquals(VendingMachine.DEFAULT_MSG, mac.getMessage());
 	}
 
 	@Test
-	public void testCase8() {
+	public void testCase8() throws Exception {
 		assertEquals(VendingMachine.COIN_VALUE, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 2, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 3, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE, mac.vendItem(3));
 		assertEquals(VendingMachine.COIN_VALUE, mac.getCurrentValue());
 		assertEquals(Dispenser.VALUE, mac.getTotalValue());
-		assertEquals(VendingMachine.DEFAULT_MSG, mac.getMessage());
 	}
 
 	@Test
@@ -106,11 +103,10 @@ public class VendingMachineTest_OrsoEtAl {
 		assertEquals(VendingMachine.COIN_VALUE * 4, mac.returnCoins());
 		assertEquals(0, mac.getCurrentValue());
 		assertEquals(0, mac.getTotalValue());
-		assertEquals(VendingMachine.DEFAULT_MSG, mac.getMessage());
 	}
 
 	@Test
-	public void testCase10() {
+	public void testCase10() throws Exception {
 		assertEquals(VendingMachine.COIN_VALUE, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 2, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 3, mac.insertCoin());
@@ -118,70 +114,74 @@ public class VendingMachineTest_OrsoEtAl {
 		assertEquals((VendingMachine.COIN_VALUE * 4) - Dispenser.VALUE, mac.vendItem(3));
 		assertEquals(VendingMachine.COIN_VALUE * 2, mac.getCurrentValue());
 		assertEquals(Dispenser.VALUE, mac.getTotalValue());
-		assertEquals(VendingMachine.DEFAULT_MSG, mac.getMessage());
 	}
 
 	@Test
-	public void testCase11() {
+	public void testCase11() throws Exception {
 		assertEquals(VendingMachine.COIN_VALUE, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 2, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 2, mac.returnCoins());
-		assertEquals(0, mac.vendItem(3));
+		try {
+			assertEquals(0, mac.vendItem(3));
+		} catch (NoCoinsException e) {}
 		assertEquals(0, mac.getCurrentValue());
 		assertEquals(0, mac.getTotalValue());
-		assertEquals(Dispenser.ERR_NO_COINS, mac.getMessage());
 	}
 
 	@Test
-	public void testCase12() {
+	public void testCase12() throws Exception {
 		assertEquals(VendingMachine.COIN_VALUE, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 2, mac.insertCoin());
 		assertEquals(0, mac.vendItem(3));
-		assertEquals(0, mac.vendItem(3));
+		try {
+			assertEquals(0, mac.vendItem(3));
+		} catch (NoCoinsException e) {}
 		assertEquals(0, mac.getCurrentValue());
 		assertEquals(Dispenser.VALUE, mac.getTotalValue());
-		assertEquals(Dispenser.ERR_NO_COINS, mac.getMessage());
 	}
 
 	@Test
-	public void testCase13() {
+	public void testCase13() throws Exception {
 		assertEquals(VendingMachine.COIN_VALUE, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 2, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 3, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 3, mac.returnCoins());
-		assertEquals(0, mac.vendItem(3));
+		try {
+			assertEquals(0, mac.vendItem(3));
+		} catch (NoCoinsException e) {}
 		assertEquals(0, mac.getCurrentValue());
 		assertEquals(0, mac.getTotalValue());
-		assertEquals(Dispenser.ERR_NO_COINS, mac.getMessage());
 	}
 
 	@Test
-	public void testCase14() {
+	public void testCase14() throws Exception {
 		assertEquals(VendingMachine.COIN_VALUE, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 2, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 3, mac.insertCoin());
 		assertEquals((VendingMachine.COIN_VALUE * 3) - Dispenser.VALUE, mac.vendItem(3));
-		assertEquals((VendingMachine.COIN_VALUE * 3) - Dispenser.VALUE, mac.vendItem(3));
+		try {
+			assertEquals((VendingMachine.COIN_VALUE * 3) - Dispenser.VALUE, mac.vendItem(3));
+		} catch (InsufficientCreditException e) {}
 		assertEquals((VendingMachine.COIN_VALUE * 3) - Dispenser.VALUE, mac.getCurrentValue());
 		assertEquals(Dispenser.VALUE, mac.getTotalValue());
-		assertEquals(Dispenser.ERR_INSUFFICIENT_CREDIT, mac.getMessage());
 	}
 
 	@Test
-	public void testCase15() {
+	public void testCase15() throws Exception {
 		assertEquals(VendingMachine.COIN_VALUE, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 2, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 3, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 4, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 4, mac.returnCoins());
-		assertEquals(0, mac.vendItem(3));
+		try {
+			assertEquals(0, mac.vendItem(3));
+		} catch (NoCoinsException e) {}
 		assertEquals(0, mac.getCurrentValue());
 		assertEquals(0, mac.getTotalValue());
-		assertEquals(Dispenser.ERR_NO_COINS, mac.getMessage());
 	}
 
 	@Test
-	public void testCase16() {
+	public void testCase16() throws Exception {
 		assertEquals(VendingMachine.COIN_VALUE, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 2, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 3, mac.insertCoin());
@@ -190,109 +190,122 @@ public class VendingMachineTest_OrsoEtAl {
 		assertEquals(0, mac.vendItem(3));
 		assertEquals(0, mac.getCurrentValue());
 		assertEquals(VendingMachine.COIN_VALUE * 4, mac.getTotalValue());
-		assertEquals(VendingMachine.DEFAULT_MSG, mac.getMessage());
 	}
 
 	/**
 	 * Test set of available selection, but unavailable item
 	 */
 	@Test
-	public void testCase17() {
-		assertEquals(0, mac.vendItem(5));
+	public void testCase17() throws Exception {
+		try {
+			assertEquals(0, mac.vendItem(5));
+		} catch (NoCoinsException e) {}
 		assertEquals(0, mac.getCurrentValue());
 		assertEquals(0, mac.getTotalValue());
-		assertEquals(Dispenser.ERR_NO_COINS, mac.getMessage());
 	}
 
 	@Test
-	public void testCase18() {
+	public void testCase18() throws Exception {
 		assertEquals(VendingMachine.COIN_VALUE, mac.insertCoin());
-		assertEquals(VendingMachine.COIN_VALUE, mac.vendItem(5));
+		try {
+			assertEquals(VendingMachine.COIN_VALUE, mac.vendItem(5));
+		} catch (UnavailableItemException e) {}
 		assertEquals(VendingMachine.COIN_VALUE, mac.getCurrentValue());
 		assertEquals(0, mac.getTotalValue());
-		assertEquals(Dispenser.ERR_UNAVAILABLE_ITEM, mac.getMessage());
 	}
 
 	@Test
-	public void testCase19() {
+	public void testCase19() throws Exception {
 		assertEquals(VendingMachine.COIN_VALUE, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE, mac.returnCoins());
-		assertEquals(0, mac.vendItem(5));
+		try {
+			assertEquals(0, mac.vendItem(5));
+		} catch (NoCoinsException e) {}
 		assertEquals(0, mac.getCurrentValue());
 		assertEquals(0, mac.getTotalValue());
-		assertEquals(Dispenser.ERR_NO_COINS, mac.getMessage());
 	}
 
 	@Test
-	public void testCase20() {
+	public void testCase20() throws Exception {
 		assertEquals(VendingMachine.COIN_VALUE, mac.insertCoin());
-		assertEquals(VendingMachine.COIN_VALUE, mac.vendItem(5));
-		assertEquals(VendingMachine.COIN_VALUE, mac.vendItem(5));
+		try {
+			assertEquals(VendingMachine.COIN_VALUE, mac.vendItem(5));
+		} catch (UnavailableItemException e) {}
+		try {
+			assertEquals(VendingMachine.COIN_VALUE, mac.vendItem(5));
+		} catch (UnavailableItemException e) {}
 		assertEquals(VendingMachine.COIN_VALUE, mac.getCurrentValue());
 		assertEquals(0, mac.getTotalValue());
-		assertEquals(Dispenser.ERR_UNAVAILABLE_ITEM, mac.getMessage());
 	}
 
-	@Test
-	public void testCase27() {
-		assertEquals(VendingMachine.COIN_VALUE, mac.insertCoin());
-		assertEquals(VendingMachine.COIN_VALUE * 2, mac.insertCoin());
-		assertEquals(VendingMachine.COIN_VALUE * 2, mac.vendItem(5));
-		assertEquals(VendingMachine.COIN_VALUE * 2, mac.getCurrentValue());
-		assertEquals(0, mac.getTotalValue());
-		assertEquals(Dispenser.ERR_UNAVAILABLE_ITEM, mac.getMessage());
-	}
 
 	/**
 	 * Test set of invalid product selection.
 	 */
 	@Test
-	public void testCase21() {
-		assertEquals(0, mac.vendItem(35));
+	public void testCase21() throws Exception {
+		try {
+			assertEquals(0, mac.vendItem(35));
+		} catch (NoCoinsException e) {}
 		assertEquals(0, mac.getCurrentValue());
 		assertEquals(0, mac.getTotalValue());
-		assertEquals(Dispenser.ERR_NO_COINS, mac.getMessage());
 	}
 
 	@Test
-	public void testCase22() {
+	public void testCase22() throws Exception {
 		assertEquals(VendingMachine.COIN_VALUE, mac.insertCoin());
-		assertEquals(VendingMachine.COIN_VALUE, mac.vendItem(35));
+		try {
+			assertEquals(VendingMachine.COIN_VALUE, mac.vendItem(35));
+		} catch (InvalidItemException e) {}
 		assertEquals(VendingMachine.COIN_VALUE, mac.getCurrentValue());
 		assertEquals(0, mac.getTotalValue());
-		assertEquals(Dispenser.ERR_INVALID_SELECTION, mac.getMessage());
 	}
 
 	@Test
-	public void testCase23() {
+	public void testCase23() throws Exception {
 		assertEquals(VendingMachine.COIN_VALUE, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 2, mac.insertCoin());
-		assertEquals(VendingMachine.COIN_VALUE * 2, mac.vendItem(35));
+		try {
+			assertEquals(VendingMachine.COIN_VALUE * 2, mac.vendItem(35));
+		} catch (InvalidItemException e) {}
 		assertEquals(VendingMachine.COIN_VALUE * 2, mac.getCurrentValue());
 		assertEquals(0, mac.getTotalValue());
-		assertEquals(Dispenser.ERR_INVALID_SELECTION, mac.getMessage());
 	}
 
 	@Test
-	public void testCase24() {
+	public void testCase24() throws Exception {
 		assertEquals(VendingMachine.COIN_VALUE, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 2, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 3, mac.insertCoin());
-		assertEquals(VendingMachine.COIN_VALUE * 3, mac.vendItem(35));
+		try {
+			assertEquals(VendingMachine.COIN_VALUE * 3, mac.vendItem(35));
+		} catch (InvalidItemException e) {}
 		assertEquals(VendingMachine.COIN_VALUE * 3, mac.getCurrentValue());
 		assertEquals(0, mac.getTotalValue());
-		assertEquals(Dispenser.ERR_INVALID_SELECTION, mac.getMessage());
 	}
 
 	@Test
-	public void testCase25() {
+	public void testCase25() throws Exception {
 		assertEquals(VendingMachine.COIN_VALUE, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 2, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 3, mac.insertCoin());
 		assertEquals(VendingMachine.COIN_VALUE * 4, mac.insertCoin());
-		assertEquals(VendingMachine.COIN_VALUE * 4, mac.vendItem(35));
+		try {
+			assertEquals(VendingMachine.COIN_VALUE * 4, mac.vendItem(35));
+		} catch (InvalidItemException e) {}
 		assertEquals(VendingMachine.COIN_VALUE * 4, mac.getCurrentValue());
 		assertEquals(0, mac.getTotalValue());
-		assertEquals(Dispenser.ERR_INVALID_SELECTION, mac.getMessage());
 	}
+
+	@Test
+	public void testCase27() throws Exception {
+		assertEquals(VendingMachine.COIN_VALUE, mac.insertCoin());
+		assertEquals(VendingMachine.COIN_VALUE * 2, mac.insertCoin());
+		try {
+			assertEquals(VendingMachine.COIN_VALUE * 2, mac.vendItem(5));
+		} catch (UnavailableItemException e) {}
+		assertEquals(VendingMachine.COIN_VALUE * 2, mac.getCurrentValue());
+		assertEquals(0, mac.getTotalValue());
+	}
+
 }
