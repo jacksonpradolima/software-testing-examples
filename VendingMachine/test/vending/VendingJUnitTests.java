@@ -8,8 +8,8 @@ import org.junit.runners.Suite;
 {
 	DispenserTest_Functional.class,
 	VendingMachineTest_Functional.class,
-	VendingMachineTest_Harrold.class
+	VendingMachineTest_OrsoEtAl.class
 })
-public class AllTests
+public class VendingJUnitTests
 {
 }

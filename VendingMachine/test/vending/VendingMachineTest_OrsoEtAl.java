@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
  * Software", published at at International Conference on Software
  * Maintenance 2001.
  */
-public class VendingMachineTest_Harrold {
+public class VendingMachineTest_OrsoEtAl {
 
 	private VendingMachine mac;
 
