@@ -1,0 +1,119 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>labes</groupId>
+	<artifactId>vending</artifactId>
+	<packaging>jar</packaging>
+	<name>Vending machine</name>
+	<version>1.0.0</version>
+	<description>Simple vending machine implementation.</description>
+	<inceptionYear>2010</inceptionYear>
+
+	<licenses>
+		<license>
+			<name>GNU General Public License (GPL) 3</name>
+			<url>http://www.gnu.org/licenses/gpl-3.0.txt</url>
+			<distribution>repo</distribution>
+			<comments />
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>magsilva</id>
+			<name>Marco Aurélio Graciotto Silva</name>
+			<email>magsilva@icmc.usp.br</email>
+			<url>http://www.icmc.usp.br/~magsilva/</url>
+			<timezone>+3</timezone>
+			<roles>
+				<role>Main developer</role>
+			</roles>
+		</developer>
+
+		<developer>
+			<id>rmartins</id>
+			<name>Rafael Messias Martins</name>
+			<email>rafaelmmm@icmc.usp.br</email>
+			<timezone>+3</timezone>
+			<roles>
+				<role>Main developer</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<organization>
+		<name>Software Engineering Laboratory</name>
+		<url>http://www.labes.icmc.usp.br</url>
+	</organization>
+
+
+	<repositories>
+		<repository>
+			<id>labes-pc-010808-releases</id>
+			<url>http://www.ironiacorp.com:8080/artifactory/repo</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+
+	<build>
+		<finalName>${artifactId}-${version}</finalName>
+
+		<directory>bin</directory>
+
+		<sourceDirectory>src</sourceDirectory>
+		<testSourceDirectory>test</testSourceDirectory>
+
+		<outputDirectory>target/classes</outputDirectory>
+		<testOutputDirectory>target/test-classes</testOutputDirectory>
+
+		<resources>
+			<resource>
+				<directory>resources</directory>
+			</resource>
+		</resources>
+
+		<testResources>
+			<testResource>
+				<directory>test-resources</directory>
+			</testResource>
+		</testResources>
+
+		<plugins>
+			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<fork>true</fork>
+					<meminitial>128m</meminitial>
+					<maxmem>512m</maxmem>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<disableXmlReport>true</disableXmlReport>
+					<parallel>classes</parallel>
+					<threadCount>4</threadCount>
+					<includes>
+						<include>**/*Test_*.java</include>
+						<include>**/*Test.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
