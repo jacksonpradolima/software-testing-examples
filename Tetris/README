@@ -1,0 +1,36 @@
+Aspect Tetris 
+
+Program originally written for a course project by Gustav Evertsson
+and found on the site:
+
+  http://www.guzzzt.com/coding/aspecttetris.shtml
+
+There's an accompanying report in this file.
+
+This version modified by Clark Verbrugge, March 2004 to act as a benchmark
+without human interaction, and more specifically to do the following:
+
+1) Compile properly with a new version of AspectJ.
+
+2) Emit data to stdout about important events, suitable for recording
+for later replay.
+
+3) Parse new command line arguments, and branch to new behaviour
+replaying a recorded file.
+
+To play back:
+java Main.AspectTetris -f someFile
+
+To record:
+java Main.AspectTetris > someFile
+
+For other options run:
+java.Main.AspectTetris -h
+
+Note about replay.  This is not guaranteed to be identical.
+Specifically, creating data to record perturbs the application (time
+stamps and i/o), event playback may not begin at exactly the same
+point, event processing duration is not well accounted for in
+playback, a Timer thread is bypassed in playback, among the usual
+Java & MT indeterminacies.
+

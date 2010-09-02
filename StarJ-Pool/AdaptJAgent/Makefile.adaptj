@@ -1,0 +1,19 @@
+CC=gcc
+CFLAGS=-Wall -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux -O2
+LIBS=-lz
+TARGET=AdaptJ
+SOURCES=*.c
+
+all: install
+
+compile: ${SOURCES}
+	${CC} ${CFLAGS} -shared ${SOURCES} -o lib${TARGET}.so ${LIBS}
+
+check: ${SOURCE}
+	${CC} ${CFLAGS} ${SOURCES} -o ${TARGET}.out ${LIBS}
+
+install: compile
+	cp lib${TARGET}.so ${HOME}/ldlib/
+
+clean:
+	rm -f lib${TARGET}.so

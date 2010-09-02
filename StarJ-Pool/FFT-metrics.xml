@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="metrics.xsl"?>
+<benchmark>
+    <metrics>
+        <category name="base">
+            <metric name="allocatedBytes">
+                <value>994888</value>
+            </metric>
+            <metric name="allocations">
+                <value>5175</value>
+            </metric>
+            <metric name="executedInstructions">
+                <value>1825376</value>
+            </metric>
+            <metric name="methods">
+                <value>32744</value>
+            </metric>
+            <metric name="loadedClasses">
+                <value>285</value>
+            </metric>
+        </category>
+        <category name="memory">
+            <metric name="byteAllocationDensity">
+                <value>545.032</value>
+            </metric>
+            <metric name="objectAllocationDensity">
+                <value>2.835</value>
+            </metric>
+            <metric name="averageObjectSize">
+                <value>192.249</value>
+                <bin>
+                    <range from="8" to="8">0.005</range>
+                    <range from="16" to="16">0.151</range>
+                    <range from="24" to="24">0.334</range>
+                    <range from="32" to="32">0.085</range>
+                    <range from="40" to="40">0.080</range>
+                    <range from="48" to="72">0.221</range>
+                    <range from="80" to="136">0.071</range>
+                    <range from="144" to="392">0.039</range>
+                    <range from="400" to="+Inf">0.012</range>
+                </bin>
+            </metric>
+            <metric name="byteAppAllocationDensity">
+                <value>0.051</value>
+            </metric>
+            <metric name="objectAppAllocationDensity">
+                <value>0.001</value>
+            </metric>
+            <metric name="averageAppObjectSize">
+                <value>56.000</value>
+            </metric>
+            <metric name="appobjectSize">
+                <bin>
+                    <range from="8" to="8">0.000</range>
+                    <range from="16" to="16">0.000</range>
+                    <range from="24" to="24">0.000</range>
+                    <range from="32" to="32">0.000</range>
+                    <range from="40" to="40">0.000</range>
+                    <range from="48" to="72">1.000</range>
+                    <range from="80" to="136">0.000</range>
+                    <range from="144" to="392">0.000</range>
+                    <range from="400" to="+Inf">0.000</range>
+                </bin>
+            </metric>
+        </category>
+        <category name="pointer">
+            <metric name="refFieldAccessDensity">
+                <value>3.702</value>
+            </metric>
+            <metric name="nonrefFieldAccessDensity">
+                <value>8.155</value>
+            </metric>
+            <metric name="appRefFieldAccessDensity">
+                <value>0.001</value>
+            </metric>
+            <metric name="appNonrefFieldAccessDensity">
+                <value>0.000</value>
+            </metric>
+            <metric name="fieldAccessDensity">
+                <value>11.857</value>
+            </metric>
+            <metric name="appFieldAccessDensity">
+                <value>0.001</value>
+            </metric>
+        </category>
+        <category name="polymorphism">
+            <metric name="callSites">
+                <value>418</value>
+            </metric>
+            <metric name="receiverArity">
+                <bin>
+                    <range from="1" to="1">0.971</range>
+                    <range from="2" to="2">0.026</range>
+                    <range from="3" to="+Inf">0.002</range>
+                </bin>
+            </metric>
+            <metric name="targetArity">
+                <bin>
+                    <range from="1" to="1">0.983</range>
+                    <range from="2" to="2">0.014</range>
+                    <range from="3" to="+Inf">0.002</range>
+                </bin>
+            </metric>
+            <metric name="receiverArityCalls">
+                <bin>
+                    <range from="1" to="1">0.980</range>
+                    <range from="2" to="2">0.009</range>
+                    <range from="3" to="+Inf">0.010</range>
+                </bin>
+            </metric>
+            <metric name="targetArityCalls">
+                <bin>
+                    <range from="1" to="1">0.987</range>
+                    <range from="2" to="2">0.002</range>
+                    <range from="3" to="+Inf">0.010</range>
+                </bin>
+            </metric>
+            <metric name="receiverPolyDensity">
+                <value>0.029</value>
+            </metric>
+            <metric name="targetPolyDensity">
+                <value>0.017</value>
+            </metric>
+            <metric name="receiverPolyDensityCalls">
+                <value>0.020</value>
+            </metric>
+            <metric name="targetPolyDensityCalls">
+                <value>0.013</value>
+            </metric>
+            <metric name="receiverCacheMissRate">
+                <value>0.032</value>
+            </metric>
+            <metric name="targetCacheMissRate">
+                <value>0.025</value>
+            </metric>
+            <metric name="appCallSites">
+                <value>5</value>
+            </metric>
+            <metric name="appReceiverArity">
+                <bin>
+                    <range from="1" to="1">1.000</range>
+                    <range from="2" to="2">0.000</range>
+                    <range from="3" to="+Inf">0.000</range>
+                </bin>
+            </metric>
+            <metric name="appTargetArity">
+                <bin>
+                    <range from="1" to="1">1.000</range>
+                    <range from="2" to="2">0.000</range>
+                    <range from="3" to="+Inf">0.000</range>
+                </bin>
+            </metric>
+            <metric name="appReceiverArityCalls">
+                <bin>
+                    <range from="1" to="1">1.000</range>
+                    <range from="2" to="2">0.000</range>
+                    <range from="3" to="+Inf">0.000</range>
+                </bin>
+            </metric>
+            <metric name="appTargetArityCalls">
+                <bin>
+                    <range from="1" to="1">1.000</range>
+                    <range from="2" to="2">0.000</range>
+                    <range from="3" to="+Inf">0.000</range>
+                </bin>
+            </metric>
+            <metric name="appReceiverPolyDensity">
+                <value>0.000</value>
+            </metric>
+            <metric name="appTargetPolyDensity">
+                <value>0.000</value>
+            </metric>
+            <metric name="appReceiverPolyDensityCalls">
+                <value>0.000</value>
+            </metric>
+            <metric name="appTargetPolyDensityCalls">
+                <value>0.000</value>
+            </metric>
+            <metric name="appReceiverCacheMissRate">
+                <value>1.000</value>
+            </metric>
+            <metric name="appTargetCacheMissRate">
+                <value>1.000</value>
+            </metric>
+            <metric name="invokeDensity">
+                <value>13.067</value>
+            </metric>
+            <metric name="appInvokeDensity">
+                <value>0.005</value>
+            </metric>
+        </category>
+        <category name="size">
+            <metric name="loadedClasses">
+                <value>285</value>
+            </metric>
+            <metric name="appLoadedClasses">
+                <value>1</value>
+            </metric>
+            <metric name="load">
+                <value>79179</value>
+            </metric>
+            <metric name="appLoad">
+                <value>538</value>
+            </metric>
+            <metric name="run">
+                <value>10420</value>
+            </metric>
+            <metric name="appRun">
+                <value>484</value>
+            </metric>
+            <metric name="hot">
+                <value>564</value>
+                <percentile threshold="0.900">0.054</percentile>
+            </metric>
+            <metric name="appHot">
+                <value>218</value>
+                <percentile threshold="0.900">0.450</percentile>
+            </metric>
+            <metric name="hotMethods">
+                <value>20</value>
+                <percentile threshold="0.900">0.041</percentile>
+            </metric>
+            <metric name="appHotMethods">
+                <value>2</value>
+                <percentile threshold="0.900">0.250</percentile>
+            </metric>
+            <metric name="hotClasses">
+                <value>7</value>
+                <percentile threshold="0.900">0.049</percentile>
+            </metric>
+            <metric name="appHotClasses">
+                <value>1</value>
+                <percentile threshold="0.900">1.000</percentile>
+            </metric>
+        </category>
+        <category name="concurrency">
+            <metric name="lockDensity">
+                <value>0.076</value>
+            </metric>
+            <metric name="lockContendedDensity">
+                <value>0.000</value>
+            </metric>
+            <metric name="lock">
+                <percentile threshold="0.900">0.625</percentile>
+            </metric>
+            <metric name="lockContended">
+                <percentile threshold="0.900">N/A</percentile>
+            </metric>
+        </category>
+        <category name="data">
+            <metric name="floatDensity">
+                <value>238.233</value>
+            </metric>
+            <metric name="charArrayDensity">
+                <value>10.924</value>
+            </metric>
+            <metric name="numArrayDensity">
+                <value>77.105</value>
+            </metric>
+            <metric name="refArrayDensity">
+                <value>0.564</value>
+            </metric>
+            <metric name="arrayDensity">
+                <value>90.002</value>
+            </metric>
+            <metric name="appCharArrayDensity">
+                <value>0.000</value>
+            </metric>
+            <metric name="appNumArrayDensity">
+                <value>110.853</value>
+            </metric>
+            <metric name="appRefArrayDensity">
+                <value>0.001</value>
+            </metric>
+            <metric name="appArrayDensity">
+                <value>110.866</value>
+            </metric>
+        </category>
+    </metrics>
+</benchmark>

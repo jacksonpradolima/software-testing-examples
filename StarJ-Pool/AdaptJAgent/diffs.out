@@ -1,0 +1,227 @@
+File: AdaptJAgent.c
+79,80d78
+< boolean initDone = false;
+< 
+86c84
+< AdaptJIDSet_t knownThreadIDs;
+---
+> /* AdaptJIDSet_t knownThreadIDs; */
+195c193
+<     
+---
+> 
+226,246c224
+< 
+<     /*
+<     if ((eventType != JVMPI_EVENT_THREAD_START) && (event->env_id != NULL)) {
+<         if (initDone) {
+<             if (idSetContains(&knownThreadIDs, (jint) event->env_id) != ID_SET_OK) {
+<                 jobjectID threadObjID;
+<                 jvmpi_interface->DisableGC();
+<                 threadObjID = jvmpi_interface->GetThreadObject(event->env_id);
+<                 jvmpi_interface->EnableGC();
+<                 if (threadObjID != NULL) {
+<                     fprintf(stderr, "Requesting thread ID %d (%d)\n", (int) threadObjID, eventType);
+<                     if (jvmpi_interface->RequestEvent(JVMPI_EVENT_THREAD_START, threadObjID) != JVMPI_SUCCESS) {
+<                         reportError("Request for THREAD_START event failed");
+<                     }
+<                 }
+<             }
+<         } else {
+<             idSetAdd(&knownThreadIDs, (jint) event->env_id);
+<         }
+<     } 
+<     */
+---
+>     
+367d344
+<             initDone = true;
+## ============================ ##
+File: AdaptJAgent.h
+## ============================ ##
+File: AdaptJArena.c
+## ============================ ##
+File: AdaptJArena.h
+## ============================ ##
+File: AdaptJClass.c
+## ============================ ##
+File: AdaptJClass.h
+## ============================ ##
+File: AdaptJGC.c
+## ============================ ##
+File: AdaptJGC.h
+## ============================ ##
+File: AdaptJIDSet.c
+## ============================ ##
+File: AdaptJIDSet.h
+## ============================ ##
+File: AdaptJIDSetMap.c
+## ============================ ##
+File: AdaptJIDSetMap.h
+## ============================ ##
+File: AdaptJIO.c
+## ============================ ##
+File: AdaptJIO.h
+## ============================ ##
+File: AdaptJInstruction.c
+## ============================ ##
+File: AdaptJInstruction.h
+## ============================ ##
+File: AdaptJJVM.c
+## ============================ ##
+File: AdaptJJVM.h
+## ============================ ##
+File: AdaptJMethod.c
+## ============================ ##
+File: AdaptJMethod.h
+## ============================ ##
+File: AdaptJMonitor.c
+## ============================ ##
+File: AdaptJMonitor.h
+## ============================ ##
+File: AdaptJObject.c
+## ============================ ##
+File: AdaptJObject.h
+## ============================ ##
+File: AdaptJSetup.c
+56c56
+< extern AdaptJIDSet_t knownThreadIDs;
+---
+> /* extern AdaptJIDSet_t knownThreadIDs; */
+285a286
+>     /*
+288a290
+>     */
+498,499d499
+<     struct stat fileStat;
+<     
+505,525d504
+<     if (stat(fileName, &fileStat) >= 0) {
+< #ifdef ADAPTJ_ENABLE_PIPE
+<         if (S_ISFIFO(fileStat.st_mode)) {
+<             if (!pipeMode) {
+<                 reportWarning2("File \"%s\" is a FIFO. Will switch to 'pipe' mode\n", fileName);
+<                 pipeMode = true;
+<             }
+<         } else if (pipeMode) {
+<                 reportError2("File \"%s\" already exists, but is not a FIFO\n", fileName);
+<                 return JNI_ERR;
+<         } else {
+< #endif
+<             if (!S_ISREG(fileStat.st_mode)) {
+<                 reportError2("File \"%s\" exists and is not a regular file\n", fileName);
+<                 return JNI_ERR;
+<             }
+< #ifdef ADAPTJ_ENABLE_PIPE
+<         }
+< #endif
+<     }
+< 
+528,532d506
+<         if (errno != EEXIST) {
+<             perror("AdaptJ Agent> Pipe error");
+<             return JNI_ERR;
+<         }
+<         /*
+534,535c508,510
+<             if (stat(fileName, &fileStat) == 0) {
+<                 if (!S_ISFIFO(fileStat.st_mode)) {
+---
+>             struct stat buf;
+>             if (stat(fileName, &buf) == 0) {
+>                 if (!S_ISFIFO(buf.st_mode)) {
+539a515
+>                 /* Should not happen */
+547d522
+<         */
+## ============================ ##
+File: AdaptJSetup.h
+## ============================ ##
+File: AdaptJSpecReader.c
+## ============================ ##
+File: AdaptJSpecReader.h
+## ============================ ##
+File: AdaptJThread.c
+29d28
+< extern AdaptJIDSet_t knownThreadIDs;
+118,119d116
+<     idSetRemove(&knownThreadIDs, (jint) thread_id);
+<     
+152,153d148
+<     idSetAdd(&knownThreadIDs, (jint) thread_env_id);
+<     
+## ============================ ##
+File: AdaptJThread.h
+## ============================ ##
+File: AdaptJUtil.c
+## ============================ ##
+File: AdaptJUtil.h
+## ============================ ##
+File: AdaptJZipMap.c
+## ============================ ##
+File: AdaptJZipMap.h
+## ============================ ##
+File: Dummy.c
+## ============================ ##
+File: ccfr.c
+## ============================ ##
+File: ccfr.h
+## ============================ ##
+File: ccfrAttributes.c
+## ============================ ##
+File: ccfrAttributes.h
+## ============================ ##
+File: ccfrBytecode.c
+## ============================ ##
+File: ccfrBytecode.h
+## ============================ ##
+File: ccfrClassPathExplorer.c
+## ============================ ##
+File: ccfrClassPathExplorer.h
+## ============================ ##
+File: ccfrConstantPool.c
+## ============================ ##
+File: ccfrConstantPool.h
+## ============================ ##
+File: ccfrErrors.c
+## ============================ ##
+File: ccfrErrors.h
+## ============================ ##
+File: ccfrFields.c
+## ============================ ##
+File: ccfrFields.h
+## ============================ ##
+File: ccfrFile.c
+## ============================ ##
+File: ccfrFile.h
+## ============================ ##
+File: ccfrHashMap.c
+## ============================ ##
+File: ccfrHashMap.h
+## ============================ ##
+File: ccfrIO.c
+## ============================ ##
+File: ccfrIO.h
+## ============================ ##
+File: ccfrMethods.c
+## ============================ ##
+File: ccfrMethods.h
+## ============================ ##
+File: ccfrUtil.c
+## ============================ ##
+File: ccfrUtil.h
+## ============================ ##
+File: ioapi.c
+## ============================ ##
+File: ioapi.h
+## ============================ ##
+File: unzip.c
+## ============================ ##
+File: unzip.h
+## ============================ ##
+File: zconf.h
+## ============================ ##
+File: zip.c
+## ============================ ##
+File: zip.h
+## ============================ ##

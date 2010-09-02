@@ -1,0 +1,4 @@
+src.includes = src/,\
+               testsrc/,\
+               testsrc/tracing/TestTracingV1.java
+src.excludes = testsrc/tracing/

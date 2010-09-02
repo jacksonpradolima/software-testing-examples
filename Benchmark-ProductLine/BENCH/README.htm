@@ -1,0 +1,98 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>University of Texas at Austin</title>
+</head>
+
+<body>
+
+<p align="center" style="line-height: 100%; word-spacing: 0; margin-top: 1; margin-bottom: 1"><b><font face="Times New Roman" color="#0000FF" size="4">University of Texas at
+Austin</font></b></p>
+
+<p align="center" style="line-height: 100%; word-spacing: 0; margin-top: 1; margin-bottom: 1"><b><font face="Times New Roman" color="#0000FF" size="4">Department of Computer
+Sciences</font></b></p>
+<p align="center" style="line-height: 100%; word-spacing: 0; margin-top: 1; margin-bottom: 1"><b><font face="Times New Roman" color="#0000FF" size="4">Product-Line
+Architecture Research Group</font></b></p>
+<p align="center" style="line-height: 100%; word-spacing: 0; margin-top: 1; margin-bottom: 1"><b><font face="Times New Roman" color="#0000FF" size="4"> Roberto Erick Lopez-Herrejon</font></b></p>
+<p align="center" style="line-height: 100%; word-spacing: 0; margin-top: 1; margin-bottom: 1"><b><font face="Times New Roman" color="#0000FF" size="4">May
+2002</font></b></p>
+<p align="center">&nbsp;</p>
+<p align="left">&nbsp;&nbsp; <font size="4"><b> README FILE.</b></font></p>
+<p align="left"><font size="3">This web page explains the contents
+of the BENCH directory.&nbsp;</font></p>
+<p align="left"><font size="3">First the names of the benchmarks and their
+contents is described, then the file format used in those files is explained.</font></p>
+<p align="left"><font size="3">We developed a random graph generator that
+produces files in that format. If you would like to use it to generate more
+examples please send us an email.&nbsp;</font></p>
+<p align="left"><font size="3">If you have any questions,
+comments, suggestions, etc please let us know.</font></p>
+<p align="left"><font size="3">My email address is&nbsp;</font><a href="mailto:rlopez@cs.utexas.edu">rlopez@cs.utexas.edu</a></p>
+<hr>
+<p align="center"><font size="5">Benchmark files</font></p>
+<p align="left">The following are the benchmark files:</p>
+<ul>
+  <li>
+    <p align="left"><font color="#0000FF">CCExample</font>: Example of connected
+    components.</li>
+  <li>
+    <p align="left"><font color="#0000FF">CycleExample1</font>: Example to test
+    cycle checking.</li>
+  <li>
+    <p align="left"><font color="#0000FF">CycleExample2</font>: Example to test
+    cycle checking.</li>
+  <li>
+    <p align="left"><font color="#0000FF">CycleExample3</font>: Example to test
+    cycle checking.</li>
+  <li>
+    <p align="left"><font color="#0000FF">CycleExample4</font>: Example to test
+    cycle checking.</li>
+  <li>
+    <p align="left"><font color="#0000FF">MSTExample</font>: Example to test
+    Minimum Spanning Trees.</li>
+  <li>
+    <p align="left"><font color="#0000FF">NumberExample</font>: Example to test
+    Vertex Numbering.</li>
+  <li>
+    <p align="left"><font color="#0000FF">SSSPExample</font>: Example to test
+    Single Source Shortest Path.</li>
+  <li>
+    <p align="left"><font color="#0000FF">STRONGLYCC</font>: Example to test
+    Strongly Connected Components.</li>
+</ul>
+
+<hr>
+<p align="center"><b><font size="5">File Format</font></b></p>
+<p align="left">The benchmark files are plain text files with the following
+format:</p>
+<p align="left"><b><font color="#0000FF">NumVertices&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font>number of vertices<font color="#0000FF"><br>
+NumEdges&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font>number of edges<font color="#0000FF"><br>
+Undirected/Directed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font>directed=1,&nbsp;&nbsp; undirected=0&nbsp;<font color="#0000FF"><br>
+SelfLoops&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font>self-loops=1,&nbsp; no self-loops=0<font color="#0000FF"><br>
+Unique/Repeated&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+unique = 1,&nbsp; repeated = 0<font color="#0000FF"><br>
+e11
+e12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font>edge 1,&nbsp; e11 is first vertex e12 is second vertex<font color="#0000FF"><br>
+ ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font>... more edges ...<font color="#0000FF"><br>
+ w1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font>weight for edge 1<font color="#0000FF"><br>
+w2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+weight for edge 2<font color="#0000FF"><br>
+ ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font>... more weights ...</b></p>
+<p align="left">Each row ends with a &quot;\n&quot; character.</p>
+<hr>
+    <p align="left">&nbsp;
+
+</body>
+
+</html>

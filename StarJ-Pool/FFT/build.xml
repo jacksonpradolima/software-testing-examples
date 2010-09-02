@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="template" default="compile" basedir=".">
+
+  <taskdef 
+    classpath="../../lib/aspectjtools-1.1.1.jar"
+    resource="org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties"/>
+
+  <property name="src" location="src"/>
+  <property name="classes" location="classes"/>
+  <property name="lib" location="../../lib"/>
+
+  <path id="compile.classpath">
+    <pathelement location="${classes}"/>
+    <pathelement location="${lib}/aspectjrt-1.1.1.jar"/>
+    <pathelement location="${lib}/aspectjtools-1.1.1.jar"/>
+  </path>
+
+  <target name="init">
+    <tstamp/>
+    <mkdir dir="${classes}"/>
+  </target>
+
+  <target name="compile" depends="init">
+    <iajc srcdir="${src}"
+          destdir="${classes}"
+          classpathref="compile.classpath">
+    </iajc>
+  </target>
+
+  <target name="clean">
+    <delete dir="${classes}"/>
+  </target>
+
+</project>

@@ -42,7 +42,7 @@ public class Dispenser
 	*/
 	public int dispense(int credit, int selection) throws Exception
 	{
-		if (credit <= 0) {
+		if (credit == 0) {
 			throw new NoCoinsException();
 		} else if (selection < INITIAL_VALID_ITEM || selection > FINAL_VALID_ITEM) {
 			throw new InvalidItemException();

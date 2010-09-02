@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="template" default="usage" basedir=".">
+
+  <property name="src" location="src/AdaptJAnalyzer"/>
+  <property name="classes" location="classes"/>
+  <property name="lib" location="../lib"/>
+  <property name="fft" location="FFT"/>
+  <property name="fftsrc" location="${fft}/src"/>
+  <property name="fftclasses" location="${fft}/classes"/>
+
+  <path id="compile.classpath.ajc11">
+    <pathelement path="${java.class.path}"/>
+    <pathelement location="${classes}"/>
+    <pathelement location="${lib}/aspectjrt-1.1.1.jar"/>
+    <pathelement location="${lib}/aspectjtools-1.1.1.jar"/>
+    <pathelement location="lib/fastUtil-2.11.jar"/>
+    <pathelement location="lib/jakarta-regexp-1.2.jar"/>
+  </path>
+
+  <path id="compile.classpath.ajc12">
+    <pathelement path="${java.class.path}"/>
+    <pathelement location="${classes}"/>
+    <pathelement location="${lib}/aspectjrt-1.2.0.jar"/>
+    <pathelement location="${lib}/aspectjtools-1.2.0.jar"/>
+    <pathelement location="lib/fastUtil-2.11.jar"/>
+    <pathelement location="lib/jakarta-regexp-1.2.jar"/>
+  </path>
+
+  <target name="init">
+    <tstamp/>
+    <mkdir dir="${classes}"/>
+    <delete file="runtimeFlavour"/>
+  </target>
+
+  <target name="usage">
+    <echo message="Please select which compiler to use by invoking ant"/>
+    <echo message="with either the compile-abc, compile-ajc11,"/>
+    <echo message="or compile-ajc12 targets."/>
+  </target>
+
+  <target name="compile-abc" depends="init">
+    <taskdef 
+      classpath="../lib/abc-complete.jar:../lib/abc-for-ajc-ant.jar"
+      resource="org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties"/>
+    <iajc sourceroots="${src}"
+          destdir="${classes}"
+	  classpath="../lib/abc-complete.jar:../lib/abc-runtime.jar:lib/fastUtil-2.11.jar:lib/jakarta-regexp-1.2.jar:classes">
+    </iajc>
+    <copy todir="${classes}">
+      <fileset dir="${src}">
+        <exclude name="**/*.java"/>
+      </fileset>
+    </copy>
+    <echo file="runtimeFlavour" message="abc${line.separator}"/>
+  </target>
+
+  <target name="compile-ajc11" depends="init">
+    <taskdef 
+      classpath="../lib/aspectjtools-1.1.1.jar"
+      resource="org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties"/>
+    <iajc sourceroots="${src}"
+          destdir="${classes}"
+          classpathref="compile.classpath.ajc11">
+    </iajc>
+    <copy todir="${classes}">
+      <fileset dir="${src}">
+        <exclude name="**/*.java"/>
+      </fileset>
+    </copy>
+    <echo file="runtimeFlavour" message="ajc11${line.separator}"/>
+  </target>
+
+  <target name="compile-ajc12" depends="init">
+    <taskdef 
+      classpath="../lib/aspectjtools-1.2.0.jar"
+      resource="org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties"/>
+    <iajc sourceroots="${src}"
+          destdir="${classes}"
+          classpathref="compile.classpath.ajc12">
+    </iajc>
+    <copy todir="${classes}">
+      <fileset dir="${src}">
+        <exclude name="**/*.java"/>
+      </fileset>
+    </copy>
+    <echo file="runtimeFlavour" message="ajc12${line.separator}"/>
+  </target>
+
+  <target name="makeTrace">
+    <mkdir dir="${fftclasses}"/>
+    <javac destdir="${fftclasses}">
+        <src>
+            <pathelement location="${fftsrc}"/>
+        </src>
+    </javac>
+
+    <!-- Profile FFT Application -->
+    <java classname="adaptj_pool.Main">
+    </java>
+  </target>
+
+  <target name="clean">
+    <delete dir="${classes}"/>
+    <delete file="runtimeFlavour"/>
+  </target>
+
+  <target name="veryclean" depends="clean">
+    <delete file="analyze.time"/>
+    <delete file="profile.time"/>
+    <delete dir="results"/>
+    <delete>
+      <fileset dir="." includes="hs_err_pid*.log"/>
+    </delete>
+  </target>
+
+</project>
