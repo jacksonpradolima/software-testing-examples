@@ -1,0 +1,23 @@
+digraph tree
+{
+	size="7.5,10"; 
+	ratio=auto;
+	node [fixedsize=false]; 
+	nodesep=0.1;
+	0 [label="0"];
+	1 [label="10"];
+	0 -> { 1; };
+	1 [label="10"];
+	2 [label="14"];
+	1 -> { 2; };
+	2 [label="14"];
+	3 [label="19"];
+	2 -> { 3; };
+	3 [label="19"];
+	4 [label="22"];
+	3 -> { 4; };
+	4 [label="22"];
+	5 [label="25"];
+	4 -> { 5; };
+	5 [label="25"];
+}

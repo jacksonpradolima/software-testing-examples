@@ -1,0 +1,8 @@
+digraph tree
+{
+	size="7.5,10"; 
+	ratio=auto;
+	node [fixedsize=false]; 
+	nodesep=0.1;
+	0 [label="0, 10, 14, 19, 22, 25"];
+}

@@ -1,0 +1,9 @@
+digraph init
+{
+	size="7.5,10"; 
+	ratio=auto;
+	nodesep=0.1;
+	0 [shape=doublecircle];
+	0 -> { 4; };
+	4 [style=bold];
+}

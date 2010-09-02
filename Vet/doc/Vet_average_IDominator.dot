@@ -1,0 +1,31 @@
+digraph tree
+{
+	size="7.5,10"; 
+	ratio=auto;
+	node [fixedsize=false]; 
+	nodesep=0.1;
+	0 [label="0"];
+	1 [label="15"];
+	2 [label="34"];
+	0 [label="0"];
+	2 -> { 0; };
+	3 [label="43"];
+	4 [label="54"];
+	5 [label="60"];
+	6 [label="74"];
+	7 [label="79"];
+	9 [label="74.82"];
+	7 -> { 9; };
+	8 [label="54.82"];
+	9 [label="74.82"];
+	6 [label="74"];
+	9 -> { 6; };
+	10 [label="60.82"];
+	11 [label="91"];
+	8 [label="54.82"];
+	10 [label="60.82"];
+	11 -> { 8; 10; };
+	12 [label="97"];
+	11 [label="91"];
+	12 -> { 11; };
+}

@@ -1,0 +1,16 @@
+digraph average
+{
+	size="7.5,10"; 
+	ratio=auto;
+	nodesep=0.1;
+	54 -> { 82; };
+	82 -> { 91; };
+	91 [shape=doublecircle];
+	91 -> { 97; };
+	97 [style=bold];
+	74 -> { 82; };
+	82 -> { 79; };
+	79 [style=bold];
+	60 -> { 82; };
+	82 -> { 91; };
+}

@@ -1,0 +1,17 @@
+digraph print
+{
+	size="7.5,10"; 
+	ratio=auto;
+	nodesep=0.1;
+	0 [shape=doublecircle];
+	0 -> { 10; };
+	10 [shape=doublecircle];
+	10 -> { 14; };
+	14 [shape=doublecircle];
+	14 -> { 19; };
+	19 [shape=doublecircle];
+	19 -> { 22; };
+	22 [shape=doublecircle];
+	22 -> { 25; };
+	25 [style=bold];
+}

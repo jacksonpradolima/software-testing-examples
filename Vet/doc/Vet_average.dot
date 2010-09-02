@@ -1,0 +1,26 @@
+digraph average
+{
+	size="7.5,10"; 
+	ratio=auto;
+	nodesep=0.1;
+	0 -> { 34; };
+	34 -> { 43; 15; };
+	34 -> { 60; 74; }[style=dashed];
+	43 -> { 54; };
+	43 -> { 60; 74; }[style=dashed];
+	54 -> { 54.82; };
+	54 -> { 74; }[style=dashed];
+	54.82 -> { 91; };
+	91 [shape=doublecircle];
+	91 -> { 97; };
+	97 [style=bold];
+	74 -> { 74.82; };
+	74 -> { 74; }[style=dashed];
+	74.82 -> { 79; };
+	79 [style=bold];
+	60 -> { 60.82; };
+	60 -> { 74; }[style=dashed];
+	60.82 -> { 91; };
+	15 -> { 34; };
+	15 -> { 60; 74; }[style=dashed];
+}
