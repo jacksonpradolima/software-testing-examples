@@ -3,7 +3,8 @@ package triangle;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class TriangleTest_Functional {
+public class TriangleTest_Functional
+{
 	@Test
 	public void testEquilateral() {
 		Triangle t = new Triangle(3, 3, 3);
